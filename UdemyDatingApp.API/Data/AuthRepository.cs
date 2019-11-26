@@ -65,9 +65,12 @@ namespace UdemyDatingApp.API.Data
             }
         }
 
-        public Task<bool> UserExists(string username)
+        public async Task<bool> UserExists(string username)
         {
-            throw new System.NotImplementedException();
+            if (await _context.Users.AnyAsync(x => x.Username == username))
+            return true;
+
+            return false;
         }
     }
 }
