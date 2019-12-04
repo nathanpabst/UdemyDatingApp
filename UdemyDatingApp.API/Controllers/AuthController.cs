@@ -7,7 +7,7 @@ using UdemyDatingApp.API.Models;
 namespace UdemyDatingApp.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+   [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
@@ -19,8 +19,7 @@ namespace UdemyDatingApp.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
-            // TODO: validate request
-
+            
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repo.UserExists(userForRegisterDto.Username))
