@@ -20,7 +20,7 @@
     <a
       class="dropdown-toggle text-light"
     >
-      Welcome User
+      Welcome {{authService.decodedToken?.unique_name | titlecase}}
     </a>
 
     <div class="dropdown-menu">
