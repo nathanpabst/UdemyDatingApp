@@ -9,7 +9,7 @@ using UdemyDatingApp.API.Data;
 namespace UdemyDatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200106134955_ExtendedUserClass")]
+    [Migration("20200107140015_ExtendedUserClass")]
     partial class ExtendedUserClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,7 @@ namespace UdemyDatingApp.API.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -112,9 +112,11 @@ namespace UdemyDatingApp.API.Migrations
 
             modelBuilder.Entity("UdemyDatingApp.API.Models.Photo", b =>
                 {
-                    b.HasOne("UdemyDatingApp.API.Models.User", null)
+                    b.HasOne("UdemyDatingApp.API.Models.User", "User")
                         .WithMany("Photos")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
