@@ -7,8 +7,18 @@ namespace UdemyDatingApp.API.Data
 {
     public class Seed
     {
+            // check db for users 
         public static void SeedUsers(DataContext context) 
         {
+            // if no users exist in the db... 
+            // add all user seed data from the json file to the userData var
+            // convert the data into a list of user objects and store in the users var
+            // loop through the users and: 
+            // -generate a password hash and password salt property 
+            // -convert the user name to lower case
+            // -add the users to context
+            // -save the changes
+            // add seed method to the main method in Program.cs | best practice for seed data
             if (!context.Users.Any())
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
