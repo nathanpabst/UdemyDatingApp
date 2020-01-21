@@ -19,8 +19,7 @@ namespace UdemyDatingApp.API.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("");
-
+                optionsBuilder.UseSqlServer("DefaultConnection");
             }
         }
     }
