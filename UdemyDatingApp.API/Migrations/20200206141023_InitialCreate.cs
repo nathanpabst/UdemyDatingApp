@@ -3,10 +3,58 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UdemyDatingApp.API.Migrations
 {
-    public partial class ExtendedUserClass : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Values",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "TEXT",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "Id",
+                table: "Values",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "INTEGER")
+                .Annotation("SqlServer:Identity", "1, 1");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Username",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "TEXT",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordSalt",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(byte[]),
+                oldType: "BLOB",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordHash",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(byte[]),
+                oldType: "BLOB",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "Id",
+                table: "Users",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "INTEGER")
+                .Annotation("SqlServer:Identity", "1, 1");
+
             migrationBuilder.AddColumn<string>(
                 name: "City",
                 table: "Users",
@@ -65,7 +113,7 @@ namespace UdemyDatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
@@ -133,6 +181,54 @@ namespace UdemyDatingApp.API.Migrations
             migrationBuilder.DropColumn(
                 name: "LookingFor",
                 table: "Users");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Values",
+                type: "TEXT",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "Id",
+                table: "Values",
+                type: "INTEGER",
+                nullable: false,
+                oldClrType: typeof(int))
+                .OldAnnotation("SqlServer:Identity", "1, 1");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Username",
+                table: "Users",
+                type: "TEXT",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordSalt",
+                table: "Users",
+                type: "BLOB",
+                nullable: true,
+                oldClrType: typeof(byte[]),
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<byte[]>(
+                name: "PasswordHash",
+                table: "Users",
+                type: "BLOB",
+                nullable: true,
+                oldClrType: typeof(byte[]),
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "Id",
+                table: "Users",
+                type: "INTEGER",
+                nullable: false,
+                oldClrType: typeof(int))
+                .OldAnnotation("SqlServer:Identity", "1, 1");
         }
     }
 }
